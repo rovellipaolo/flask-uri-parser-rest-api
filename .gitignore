@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+
+# Python
+*.pyc
+__pycache__
+.pytest_cache/
+.coverage
+coverage.xml
+venv/

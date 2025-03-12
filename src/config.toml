@@ -1,0 +1,5 @@
+# Flask Logging: https://flask.palletsprojects.com/en/stable/logging/
+LOG_LEVEL = "INFO"
+
+# Flask Configuration: https://flask.palletsprojects.com/en/stable/config/
+TESTING = false
