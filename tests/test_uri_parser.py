@@ -2,7 +2,7 @@ import unittest
 from unittest.mock import patch, MagicMock
 from parameterized import parameterized
 
-from src.uri_parser import UriParser
+from uri_parser.uri_parser import UriParser
 
 
 class TestUriParser(unittest.TestCase):
@@ -40,7 +40,7 @@ class TestUriParser(unittest.TestCase):
         [False, False, True, False, True],
         [False, False, False, True, True]
     ])
-    @patch("src.uri_parser.validators")
+    @patch("uri_parser.uri_parser.validators")
     # pylint: disable-next=too-many-arguments,too-many-positional-arguments
     def test_is_valid(self, is_url, is_ipv4, is_ipv6, is_email, expected_result, mock_validators):
         mock_validators.url.return_value = is_url
@@ -154,7 +154,7 @@ class TestUriParser(unittest.TestCase):
             }
         ]
     ])
-    @patch("src.uri_parser.urlparse")
+    @patch("uri_parser.uri_parser.urlparse")
     # pylint: disable-next=too-many-arguments,too-many-positional-arguments
     def test_parse(
         self,

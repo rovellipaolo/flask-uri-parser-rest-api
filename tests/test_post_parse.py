@@ -1,12 +1,6 @@
-import sys
 import unittest
 from parameterized import parameterized
-
-# Inject uri_parser.py (in production this is not needed):
-sys.path.append("src")
-
-# pylint: disable-next=wrong-import-position
-from src.app import app  # noqa: E402
+from app import app
 
 
 class TestPostParse(unittest.TestCase):

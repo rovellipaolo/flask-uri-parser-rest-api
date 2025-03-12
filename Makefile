@@ -42,12 +42,16 @@ test-debug:
 
 .PHONY: checkstyle
 checkstyle:
-	@pipenv run pycodestyle --max-line-length=120 src/ tests/
-	@pipenv run pylint src/ tests/
+	@pipenv run pycodestyle --max-line-length=120 app.py uri_parser/ tests/
+	@pipenv run pylint app.py uri_parser/ tests/
 
 
 # Run
 
 .PHONY: run-dev
 run-dev:
-	@pipenv run python3 -m flask --app src/app run
+	@pipenv run python3 -m flask --app app run
+
+.PHONY: run
+run:
+	@pipenv run gunicorn --workers=4 app:app

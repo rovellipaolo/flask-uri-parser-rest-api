@@ -1,6 +1,6 @@
 import tomllib
 from flask import Flask, jsonify, request
-from uri_parser import UriParser
+from uri_parser.uri_parser import UriParser
 
 app = Flask(__name__)
 app.config.from_file("config.toml", load=tomllib.load, text=False)
