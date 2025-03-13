@@ -1,3 +1,8 @@
+DOCKER_FILE :=  docker/Dockerfile
+DOCKER_IMAGE := uriparser
+DOCKER_TAG := latest
+
+
 # Build:
 
 .PHONY: build
@@ -9,6 +14,10 @@ build:
 build-dev:
 	make build
 	@pipenv install --dev
+
+.PHONY: build-docker
+build-docker:
+	@docker build -f ${DOCKER_FILE} -t ${DOCKER_IMAGE}:${DOCKER_TAG} .
 
 .PHONY: generate-checkstyle-config
 generate-checkstyle-config:
@@ -36,6 +45,10 @@ test-coverage:
 	@pipenv run coverage3 xml --data-file=".coverage" -o "coverage.xml"
 	@pipenv run coverage3 report --data-file=".coverage" --show-missing
 
+.PHONY: test-docker
+test-docker:
+	@docker run --name ${DOCKER_IMAGE} --rm -w /opt/uriparser -v $(PWD)/tests:/opt/uriparser/tests ${DOCKER_IMAGE}:${DOCKER_TAG} python3 -m unittest
+
 .PHONY: test-debug
 test-debug:
 	@pipenv run python3 -m pdb -m unittest
@@ -55,3 +68,8 @@ run-dev:
 .PHONY: run
 run:
 	@pipenv run gunicorn --workers=4 app:app
+
+.PHONY: run-docker
+run-docker:
+#	@docker run -p 127.0.0.1:5000:5000 --name ${DOCKER_IMAGE} -it --rm ${DOCKER_IMAGE}:${DOCKER_TAG}
+	@docker run -p 127.0.0.1:8000:8000 --name ${DOCKER_IMAGE} -it --rm ${DOCKER_IMAGE}:${DOCKER_TAG}

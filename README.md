@@ -24,6 +24,9 @@ $ git clone https://github.com/rovellipaolo/flask-uri-parser-rest-api
 $ cd flask-uri-parser-rest-api
 ```
 
+URI Parser REST API has two ways to be executed: natively in your local environment or in [Docker](https://www.docker.com/).
+
+### Native
 To execute URI Parser REST API in your local machine, you need `Python 3.12` or higher installed.
 Just launch the following commands, which will install all the needed Python dependencies.
 
@@ -40,10 +43,21 @@ $ curl -X POST http://127.0.0.1:5000/api/parse -d '{"uri": "https://user:passwor
 ```
 **NOTE:** The OpenAPI definition will be exposed at `http://localhost:5000` (Swagger UI) and `http://localhost:5000/openapi.json` (raw JSON).
 
+### Docker
+To execute URI Parser REST API in Docker, you need `Docker` installed.
+To build the Docker image, launch the following commands:
+```shell
+$ make build-docker
+$ make run-docker
+```
+
 
 ## Test
 
 Once you've configured it (see the _"Build"_ section), you can also run the tests and checkstyle as follows.
+
+### Native
+To run them in your local machine, launch the following command:
 
 ```shell
 $ make test
@@ -58,6 +72,13 @@ $ make test-coverage
 And/or configure the checkstyle to run automatically at every git commit by launching the following command:
 ```shell
 $ make install-githooks
+```
+
+### Docker
+To run them in Docker, launch the following command:
+```shell
+$ make build-docker
+$ make test-docker
 ```
 
 
