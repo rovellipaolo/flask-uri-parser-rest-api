@@ -38,6 +38,7 @@ $ curl -X GET http://127.0.0.1:5000/api/status
 $ curl -X POST http://127.0.0.1:5000/api/parse -d '{"uri": "https://user:password@domain.tld:8080/path?key=value#fragment"}'
 {"fragment":"fragment","host":"domain.tld","path":"/path","port":8080,"query":"key=value","raw":"https://user:password@domain.tld:8080/path?key=value#fragment","scheme":"https","userinfo":"user:password"}
 ```
+**NOTE:** The OpenAPI definition will be exposed at `http://localhost:5000` (Swagger UI) and `http://localhost:5000/openapi.json` (raw JSON).
 
 
 ## Test

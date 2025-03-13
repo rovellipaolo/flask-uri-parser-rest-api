@@ -15,7 +15,7 @@ class TestUriParser(unittest.TestCase):
     def _any_urlparse(
         fragment: str = "",
         host: str | None = None,
-        port: str | None = None,
+        port: int | None = None,
         path: str = "",
         password: str | None = None,
         query: str = "",
@@ -76,7 +76,7 @@ class TestUriParser(unittest.TestCase):
         [
             "",
             "any-host",
-            "",
+            None,
             "",
             "",
             "",
@@ -85,7 +85,7 @@ class TestUriParser(unittest.TestCase):
             {
                 "fragment": None,
                 "host": "any-host",
-                "port": "",
+                "port": None,
                 "path": None,
                 "query": None,
                 "raw": ANY_URI,

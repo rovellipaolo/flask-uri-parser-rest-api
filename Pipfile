@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 flask = "==3.*"
 gunicorn = "==23.*"
+flasgger = "==0.*"
 validators = "==0.34.*"
 
 [dev-packages]
